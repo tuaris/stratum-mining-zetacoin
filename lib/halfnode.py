@@ -15,7 +15,6 @@ from Crypto.Hash import SHA256
 from twisted.internet.protocol import Protocol
 from util import *
 
-import ltc_scrypt
 import lib.logger
 log = lib.logger.get_logger('halfnode')
 
@@ -174,7 +173,6 @@ class CBlock(object):
         self.nNonce = 0
         self.vtx = []
         self.sha256 = None
-        self.scrypt = None
     def deserialize(self, f):
         self.nVersion = struct.unpack("<i", f.read(4))[0]
         self.hashPrevBlock = deser_uint256(f)
@@ -205,24 +203,10 @@ class CBlock(object):
             self.sha256 = uint256_from_str(SHA256.new(SHA256.new(''.join(r)).digest()).digest())
         return self.sha256
 
-    def calc_scrypt(self):
-        if self.scrypt is None:
-            r = []
-            r.append(struct.pack("<i", self.nVersion))
-            r.append(ser_uint256(self.hashPrevBlock))
-            r.append(ser_uint256(self.hashMerkleRoot))
-            r.append(struct.pack("<I", self.nTime))
-            r.append(struct.pack("<I", self.nBits))
-            r.append(struct.pack("<I", self.nNonce))
-            self.scrypt = uint256_from_str(ltc_scrypt.getPoWHash(''.join(r)))
-        return self.scrypt
-
     def is_valid(self):
-        #self.calc_sha256()
-        self.calc_scrypt()
+        self.calc_sha256()
         target = uint256_from_compact(self.nBits)
-        #if self.sha256 > target:
-        if self.scrypt > target:
+        if self.sha256 > target:
             return False
         hashes = []
         for tx in self.vtx:
