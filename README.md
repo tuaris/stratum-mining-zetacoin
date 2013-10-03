@@ -1,65 +1,57 @@
 #Description
 Stratum-mining is a pooled mining protocol. It is a replacement for *getwork* based pooling servers by allowing clients to generate work. The stratum protocol is described [here](http://mining.bitcoin.cz/stratum-mining) in full detail.
 
-This is a implementation of stratum-mining for scrypt based coins. It is compatible with *mmcfe-ng* as well as *mmcfe*, as it complies with the standards of *pushpool*. The end goal is to build on these standards to come up with a more stable solution.
+This is an implementation of stratum-mining for SHA-256 based coins; specifically built and tested for Zetacoin. It is compatible with *mmcfe-ng* as well as *mmcfe*, as it complies with the standards of *pushpool*.
 
-The goal is to make a reliable stratum mining server for scrypt based coins. Over time I will develop this to be more feature rich and very stable. If you would like to see a feature please file a feature request. 
+The goal is to make a reliable stratum mining server for Zetacoin based pools. Over time any stability or security issues will be patched as discovered.
 
-**NOTE:** This fork is still in development. Many features may be broken. Please report any broken features or issues.
+**NOTE:** This fork is in active development. Features may be broken, or may become broken with an update in the future. Please report any broken features or issues.
 
 #Donors
 A special thanks to everyone that has donated to this project. 
 
-* [litepool] (http://litepool.eu) @ freenode
-* john__ @ freenode
-* [neamiss] (http://dgc.scryptmining.com) @ freenode
+* Nobody yet...
 
-Litecoin Donations are welcome: LdaQyrh8PaLTuBxtgGo97Pj49CScqMTxvX
+Zetacoin Donations are welcome: ZUnvK9Uj8AGbvPXyGsmU9QiNUnxz6THCNf
 
 #Features
 
 * Stratum Mining Pool 
 * Solved Block Confirmation
-* Scrypt based coins
-* Vardiff support
+* Zetacoin network compatible
+* Should be SHA-256 coin compatible
+* DYNAMIC Vardiff support [The server will automatically determine difficulty for miner. Doesn't accept user choice.]
 * Log Rotation
 * Initial low difficulty share confirmation
-* Multiple *litecoind* wallets
-* On the fly addition of new *litecoind* wallets
+* Multiple *zetacoind* wallets
+* On the fly addition of new *zetacoind* wallets
 * MySQL database support
 * Adjustable database commit parameters
 * Bypass password check for workers
+* Automatically create workers on first connect
 
 
 #Requirements
-*stratum-mining-litecoin* is built in python. I have been testing it with 2.7.3, but it should work with other versions. The requirements for running the software are below.
+*stratum-mining-zetacoin* is built in python. I have been testing it with 2.7.4, but it should work with other versions. The requirements for running the software are below.
 
 * Python 2.7+
 * python-twisted
 * stratum
 * MySQL Server 
-* Litecoind
-
-Other coins have been known to work with this implementation. I have tested with the following coins, but there may be many others that work. 
-
-* Litecoin
-* Feathercoin
-* Digitalcoin
-* BBQcoin
-* Florincoin
-* Megacoin
-* Hypercoin
-* Luckycoin
-* Alphacoin
-* Argentum
-* Emeraldcoin
+* Zetacoind
 
 #Installation
 
-The installation of this *stratum-mining-litecoin* can be found in the INSTALL.md file. 
+1. Clone.
+
+2. Copy conf/config_sample.py to conf/config.py
+
+3. Edit config.py appropriately
+
+4. Test, test, test.
 
 #Contact
-I try to stay in #stratum-mining-litecoin on freenode. I am more responsive to requests made through github. 
+I try to stay in #ZetaCoin on freenode.
 
 #Credits
 
@@ -67,7 +59,8 @@ I try to stay in #stratum-mining-litecoin on freenode. I am more responsive to r
 * Modified version by GeneralFault
 * Modified version Wade Womersley (Media Skunk Works)
 * Scrypt conversion from work done by viperaus
-* Modified version by moopless ( Donations Welcome: LdaQyrh8PaLTuBxtgGo97Pj49CScqMTxvX)
+* Modified version by moopless
+* ZetaCoin converted version by IainKay (Donations welcome: ZUnvK9Uj8AGbvPXyGsmU9QiNUnxz6THCNf)
 
 
 #License
