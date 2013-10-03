@@ -3,6 +3,8 @@ Stratum-mining is a pooled mining protocol. It is a replacement for *getwork* ba
 
 This is an implementation of stratum-mining for SHA-256 based coins; specifically built and tested for Zetacoin. It is compatible with *mmcfe-ng* as well as *mmcfe*, as it complies with the standards of *pushpool*.
 
+Rather than forking from the GeneralFault stratum-mining repository which most have for ZetaCoin - I wanted to ensure that the latest improvements and fixes were incorporated. To do this I forked from the moopless stratum-mining-litecoin repository and removed scrypt. This should ensure that this is the most up to date stratum-mining code that has been tested for ZetaCoin from day one.
+
 The goal is to make a reliable stratum mining server for Zetacoin based pools. Over time any stability or security issues will be patched as discovered.
 
 **NOTE:** This fork is in active development. Features may be broken, or may become broken with an update in the future. Please report any broken features or issues.
