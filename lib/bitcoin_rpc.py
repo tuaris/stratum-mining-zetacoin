@@ -1,5 +1,5 @@
 '''
-    Implements simple interface to litecoind's RPC.
+    Implements simple interface to bitcoind's RPC.
 '''
 
 import simplejson as json
@@ -23,7 +23,6 @@ class BitcoinRPC(object):
 	client.HTTPClientFactory.noisy = False
         
     def _call_raw(self, data):
-        client.Headers
         return client.getPage(
             url=self.bitcoin_url,
             method='POST',
