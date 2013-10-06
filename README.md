@@ -1,3 +1,6 @@
+#Vardiff Branch Notes
+This branch is in *active development* and *will* be broken. Do *not* run this in production yet.
+
 #Description
 Stratum-mining is a pooled mining protocol. It is a replacement for *getwork* based pooling servers by allowing clients to generate work. The stratum protocol is described [here](http://mining.bitcoin.cz/stratum-mining) in full detail.
 
