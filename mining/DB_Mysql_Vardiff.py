@@ -60,34 +60,35 @@ class DB_Mysql_Vardiff(DB_Mysql.DB_Mysql):
 
             self.dbh.commit()
 
+    # We no longer update_worker_diff, this is done from frontend.
     def update_worker_diff(self, username, diff):
-        log.debug("Setting difficulty for %s to %s", username, diff)
+        return ''
+
+    def get_worker_diff(self, username):
+        log.debug("Getting difficulty for %s", username)
         
         self.execute(
             """
-            UPDATE `pool_worker`
-            SET `difficulty` = %(diff)s
+            SELECT `difficulty`
+            FROM `pool_worker`
             WHERE `username` = %(uname)s
             """,
             {
-                "uname": username, 
-                "diff": diff
+                "uname": username
             }
+
         )
         
-        self.dbh.commit()
-    
+        ret = {}
+
+        for data in self.dbc.fetchall():
+            ret = float(data[0])
+            
+        return ret
+
+    # We no longer update_worker_diff, this is done from frontend.
     def clear_worker_diff(self):
-        log.debug("Resetting difficulty for all workers")
-        
-        self.execute(
-            """
-            UPDATE `pool_worker`
-            SET `difficulty` = 0
-            """
-        )
-        
-        self.dbh.commit()
+        return ''
 
 
     def get_workers_stats(self):
@@ -115,22 +116,3 @@ class DB_Mysql_Vardiff(DB_Mysql.DB_Mysql):
             }
             
         return ret
-
-    def get_worker_difficulty(self):
-        self.execute(
-            """
-            SELECT `difficulty`
-            FROM `pool_worker`
-            WHERE `username` = %(uname)s
-            """
-        )
-        
-        ret = {}
-        
-        for data in self.dbc.fetchall():
-            ret[data[0]] = {
-                "difficulty": float(data[0])
-            }
-            
-        return ret
-

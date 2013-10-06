@@ -184,14 +184,14 @@ class DBInterface():
     def update_worker_diff(self, username, diff):
         return self.dbi.update_worker_diff(username, diff)
 
+    def get_worker_diff(self, username):
+        return self.dbi.get_worker_diff(username)
+
     def get_pool_stats(self):
         return self.dbi.get_pool_stats()
     
     def get_workers_stats(self):
         return self.dbi.get_workers_stats()
-
-    def get_worker_difficulty(self):
-        return self.dbi.get_worker_difficulty()
 
     def clear_worker_diff(self):
         return self.dbi.clear_worker_diff()
