@@ -1,5 +1,12 @@
 #Vardiff Branch Notes
-This branch is in *active development* and *will* be broken. Do *not* run this in production yet.
+
+The *vardiff* branch features significant modifications to the standard "dynamic" variable difficulty that is supported out the box in most stratum-mining implementations.
+
+Instead of determining the best difficulty for each worker based on the number of shares submitted per X seconds, the stratum server will read field 'difficulty' from the 'pool_worker' database table and will use this value to retarget the worker.
+
+This enables a pool front-end to allow users the choice of worker difficulty and the stratum server will simply pick it up.
+
+**Note:** Do NOT run this in production without modifying **and** testing your pool front-end software. This is NOT compatible with any *mmcfe* or *mmcfe-ng* software publicly released.
 
 #Description
 Stratum-mining is a pooled mining protocol. It is a replacement for *getwork* based pooling servers by allowing clients to generate work. The stratum protocol is described [here](http://mining.bitcoin.cz/stratum-mining) in full detail.
@@ -25,7 +32,7 @@ Zetacoin Donations are welcome: ZUnvK9Uj8AGbvPXyGsmU9QiNUnxz6THCNf
 * Solved Block Confirmation
 * Zetacoin network compatible
 * Should be SHA-256 coin compatible
-* DYNAMIC Vardiff support [The server will automatically determine difficulty for miner. Doesn't accept user choice.]
+* STATIC Vardiff support [The server will adjust worker to 'difficulty' field value in 'pool_worker' db table.]
 * Log Rotation
 * Initial low difficulty share confirmation
 * Multiple *zetacoind* wallets
