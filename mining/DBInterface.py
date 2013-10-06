@@ -190,6 +190,9 @@ class DBInterface():
     def get_workers_stats(self):
         return self.dbi.get_workers_stats()
 
+    def get_worker_difficulty(self):
+        return self.dbi.get_worker_difficulty()
+
     def clear_worker_diff(self):
         return self.dbi.clear_worker_diff()
 
