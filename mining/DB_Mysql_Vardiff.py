@@ -116,3 +116,21 @@ class DB_Mysql_Vardiff(DB_Mysql.DB_Mysql):
             
         return ret
 
+    def get_worker_difficulty(self):
+        self.execute(
+            """
+            SELECT `difficulty`
+            FROM `pool_worker`
+            WHERE `username` = %(uname)s
+            """
+        )
+        
+        ret = {}
+        
+        for data in self.dbc.fetchall():
+            ret[data[0]] = {
+                "difficulty": float(data[0])
+            }
+            
+        return ret
+
