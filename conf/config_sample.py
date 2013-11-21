@@ -144,6 +144,17 @@ VDIFF_VARIANCE_PERCENT = 20	# Allow average time to very this % from target with
 # Please make sure your front end is compatible with the block hash in the solutions table.
 SOLUTION_BLOCK_HASH = False # If enabled, send the block hash. If false send the scrypt hash in the shares table
 
+# ******************** E-Mail Notification Settings *********************
+
+NOTIFY_EMAIL_TO = ''		# Where to send Start/Found block notifications
+NOTIFY_EMAIL_TO_DEADMINER = ''	# Where to send dead miner notifications
+NOTIFY_EMAIL_FROM = 'root@localhost'	# Sender address
+NOTIFY_EMAIL_SERVER = 'localhost'	# E-Mail Sender
+NOTIFY_EMAIL_USERNAME = ''		# E-Mail server SMTP Logon
+NOTIFY_EMAIL_PASSWORD = ''
+NOTIFY_EMAIL_USETLS = True
+
+
 # ******************** Admin settings *********************
 
 # Use scripts/generateAdminHash.sh <password> to generate the hash
